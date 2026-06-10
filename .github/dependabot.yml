@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      cronjob: "30 0 * * 2"
+    groups:
+      deps:
+        patterns:
+          - "actions*"
+      tools:
+        patterns:
+          - "azure*"
+    commit-message:
+      prefix: "[GitHub Actions Dependency Update]"
+    open-pull-requests-limit: 10
+    target-branch: "github-actions"
+    labels:
+      - "github-actions"
+      - "dependabot"
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "cron"
+      cronjob: "30 12 * * 2"
+    groups:
+      deps:
+        patterns:
+          - "react*"
+      tools:
+        patterns:
+          - "@eslint*"
+          - "@vite*"
+          - "eslint*"
+          - "vite*"
+    commit-message:
+      prefix: "[npm Dependency Update (Frontend)]"
+    open-pull-requests-limit: 10
+    target-branch: "dev"
+    labels:
+      - "npm"
+      - "dependabot"
