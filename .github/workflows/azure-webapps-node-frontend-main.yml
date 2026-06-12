@@ -22,7 +22,6 @@ permissions:
 
 jobs:
     build:
-        if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
 
         steps:
@@ -42,6 +41,11 @@ jobs:
                 npm run build --if-present
                 npm run test --if-present
 
+            - name: Copy environment files
+              run: |
+                mkdir -p public
+                cp ${{ env.DIRECTORY_NAME }}/src/environmentfiles/${{ env.BRANCH_NAME }}/robots.txt public/robots.txt
+
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v7
               with:
@@ -49,7 +53,6 @@ jobs:
                 path: ${{ env.DIRECTORY_NAME }}/dist
 
     deploy:
-        if: github.event.pull_request.merged == true
         permissions:
             contents: none
         runs-on: ubuntu-latest
