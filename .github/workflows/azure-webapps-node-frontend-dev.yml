@@ -64,6 +64,7 @@ jobs:
             name: "Development"
             url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
+        if: github.actor != 'dependabot[bot]'
         steps:
             - name: Download artifact from build job
               uses: actions/download-artifact@v8
