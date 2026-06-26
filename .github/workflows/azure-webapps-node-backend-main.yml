@@ -1,4 +1,4 @@
-name: Frontend Updates (main branch)
+name: Backend Updates (main branch)
 
 on:
     pull_request:
@@ -7,7 +7,7 @@ on:
         branches:
             - main
         paths:
-            - "frontend/**"
+            - "backend/**"
     workflow_dispatch:
 
 env:
@@ -15,7 +15,7 @@ env:
     AZURE_WEBAPP_PACKAGE_PATH: "."
     NODE_VERSION: "24.x"
     BRANCH_NAME: "main"
-    DIRECTORY_NAME: "frontend"
+    DIRECTORY_NAME: "backend"
 
 permissions:
     contents: read
@@ -41,16 +41,11 @@ jobs:
                 npm run build --if-present
                 npm run test --if-present
 
-            - name: Copy environment files
-              run: |
-                mkdir -p public
-                cp ${{ env.DIRECTORY_NAME }}/src/environmentfiles/${{ env.BRANCH_NAME }}/robots.txt public/robots.txt
-
             - name: Upload artifact to deploy job
               uses: actions/upload-artifact@v7
               with:
                 name: node-app-${{ env.BRANCH_NAME }}
-                path: ${{ env.DIRECTORY_NAME }}/dist
+                path: ${{ env.DIRECTORY_NAME }}
 
     deploy:
         permissions:
@@ -66,7 +61,6 @@ jobs:
               uses: actions/download-artifact@v8
               with:
                 name: node-app-${{ env.BRANCH_NAME }}
-                path: public/
 
             - name: Deploy to Azure Web App
               id: deploy-to-webapp
