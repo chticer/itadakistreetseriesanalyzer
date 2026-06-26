@@ -14,7 +14,7 @@ on:
     workflow_dispatch:
 
 env:
-    AZURE_WEBAPP_NAME: "itadakistreetseriesanalyzer"
+    AZURE_WEBAPP_NAME: "itadakistreetseriesanalyzertemp"
     AZURE_WEBAPP_PACKAGE_PATH: "."
     NODE_VERSION: "24.x"
     BRANCH_NAME: "dev"
@@ -28,7 +28,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
 
             - name: Set up Node.js
               uses: actions/setup-node@v6
@@ -44,7 +44,12 @@ jobs:
                 npm run build --if-present
                 npm run test --if-present
 
-            - name: Upload artifact for deployment job
+            - name: Copy environment files
+              run: |
+                mkdir -p public
+                cp ${{ env.DIRECTORY_NAME }}/src/environmentfiles/${{ env.BRANCH_NAME }}/robots.txt public/robots.txt
+
+            - name: Upload artifact to deploy job
               uses: actions/upload-artifact@v7
               with:
                 name: node-app-${{ env.BRANCH_NAME }}
@@ -64,6 +69,7 @@ jobs:
               uses: actions/download-artifact@v8
               with:
                 name: node-app-${{ env.BRANCH_NAME }}
+                path: public/
 
             - name: Deploy to Azure Web App
               id: deploy-to-webapp
