@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import path from "path";
 import mongoose from "mongoose";
 import { fileURLToPath } from "url";
+import { getBackendRoutesCache, syncBackendRoutes, initializeBackendRoutesCache } from "./services/backendRouteCache.js";
+import BackendRouteRegistryGuard from "./middleware/backend-route-registry-guard.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -47,6 +49,23 @@ const startup = async () =>
 
         app.use(express.json());
         app.use(express.urlencoded({ extended: true }));
+
+        syncBackendRoutes();
+
+        await initializeBackendRoutesCache();
+
+        console.log("Initialized backend route cache");
+
+        app.use(BackendRouteRegistryGuard);
+
+        const backendRoutesCache = getBackendRoutesCache();
+
+        await Promise.all(backendRoutesCache.map(async (route) =>
+        {
+            const backendRouteModule = await import(`./routes/${route["route_script_file_name"]}.js`);
+
+            app.use(route["base_path"], backendRouteModule.default);
+        }));
 
         app.use(express.static(path.join(__dirname, "/")));
 
