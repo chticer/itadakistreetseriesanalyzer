@@ -6,11 +6,13 @@ on:
             - dev
         paths:
             - "frontend/**"
+            - "shared/**"
     pull_request:
         branches:
             - dev
         paths:
             - "frontend/**"
+            - "shared/**"
     workflow_dispatch:
 
 env:
@@ -47,6 +49,10 @@ jobs:
             - name: Copy environment files
               run: |
                 cp ${{ env.DIRECTORY_NAME }}/src/environmentfiles/${{ env.BRANCH_NAME }}/robots.txt ${{ env.DIRECTORY_NAME }}/dist/robots.txt
+
+            - name: Copy shared files
+              run: |
+                cp -r shared ${{ env.DIRECTORY_NAME }}/src/shared
 
             - name: Upload artifact to deploy job
               uses: actions/upload-artifact@v7
