@@ -11,9 +11,11 @@ export const GlobalStateProvider = ({ children }) =>
     );
 
     return (
+    <>
         <GlobalStateContext value={{ appData, setAppData }}>
             { children }
         </GlobalStateContext>
+    </>
     );
 };
 
