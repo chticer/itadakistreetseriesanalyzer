@@ -5,7 +5,8 @@ import dotenv from "dotenv";
 import path from "path";
 import mongoose from "mongoose";
 import { fileURLToPath } from "url";
-import { getBackendRoutesCache, syncBackendRoutes, initializeBackendRoutesCache } from "./services/backendRouteCache.js";
+import { syncRoutePaths } from "./services/route-paths-logic.js";
+import { getBackendRoutePathsCache, initializeRoutePathsCache } from "./services/route-paths-cache.js";
 import BackendRouteRegistryGuard from "./middleware/backend-route-registry-guard.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -50,21 +51,23 @@ const startup = async () =>
         app.use(express.json());
         app.use(express.urlencoded({ extended: true }));
 
-        syncBackendRoutes();
+        await syncRoutePaths();
 
-        await initializeBackendRoutesCache();
+        console.log("Synced all route paths cache");
 
-        console.log("Initialized backend route cache");
+        await initializeRoutePathsCache();
+
+        console.log("Initialized route paths cache");
 
         app.use(BackendRouteRegistryGuard);
 
-        const backendRoutesCache = getBackendRoutesCache();
+        const backendRoutePathsCache = getBackendRoutePathsCache();
 
-        await Promise.all(backendRoutesCache.map(async (route) =>
+        await Promise.all(backendRoutePathsCache.map(async (routePath) =>
         {
-            const backendRouteModule = await import(`./routes/${route["route_script_file_name"]}.js`);
+            const backendRouteModule = await import(`./routes/${routePath["route_script_file_name"]}.js`);
 
-            app.use(route["base_path"], backendRouteModule.default);
+            app.use(routePath["base_path"], backendRouteModule.default);
         }));
 
         app.use(express.static(path.join(__dirname, "/")));
