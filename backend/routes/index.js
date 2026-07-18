@@ -1,24 +1,25 @@
 import express from "express";
-import { getRoutePaths } from "../services/routePathsLogic.js";
+import { getBackendRoutePathsMappingCache, getFrontendRoutePathsStatusesCache } from "../services/route-paths-cache.js";
 
 const router = express.Router();
 
-router.get("/sitemap.xml", async (req, res, next) =>
+const BACKEND_ROUTE_PATHS_MAPPING = getBackendRoutePathsMappingCache();
+const FRONTEND_ROUTE_PATHS_STATUSES = getFrontendRoutePathsStatusesCache();
+
+router.get(BACKEND_ROUTE_PATHS_MAPPING.INDEX.SITEMAP.ROUTE, (req, res, next) =>
 {
     try
     {
-        const getRoutePathsResponse = await getRoutePaths({ active: true });
-
         const sitemap =
         `
             <?xml version="1.0" encoding="UTF-8"?>
             <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
                 ${
-                    getRoutePathsResponse.map((route) =>
+                    FRONTEND_ROUTE_PATHS_STATUSES.filter((routePathsStatus) => routePathsStatus["ACTIVE"]).map((routePathsStatus) =>
                     `
                         <url>
-                            <loc>${req.protocol}://${req.get("host")}${route.path}</loc>
+                            <loc>${req.protocol}://${req.get("host")}${routePathsStatus["FULL_PATH"]}</loc>
                         </url>
                     `).join("")
                 }
