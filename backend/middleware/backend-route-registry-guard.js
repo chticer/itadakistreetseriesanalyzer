@@ -1,17 +1,19 @@
-import { getBackendRoutesCacheAllRoutePaths, checkActiveBackendRoute } from "../services/backendRouteCache.js";
+import { getBackendRoutePathsStatusesCache } from "../services/route-paths-cache.js";
 
-const BackendRouteRegistryGuard = async (req, res, next) =>
+const BackendRouteRegistryGuard = (req, res, next) =>
 {
-    const backendRouteCacheAllRoutePaths = getBackendRoutesCacheAllRoutePaths();
+    const BACKEND_ROUTE_PATHS_STATUSES = getBackendRoutePathsStatusesCache();
 
-    if (backendRouteCacheAllRoutePaths.indexOf(req.path) === -1)
+    const backendRoutePathsStatusRecord = BACKEND_ROUTE_PATHS_STATUSES.find((routePathsStatus) => req.path === routePathsStatus["FULL_PATH"]);
+
+    if (!backendRoutePathsStatusRecord)
         return next();
 
-    const backendRouteError = new Error("The backend route is not available.");
-    backendRouteError.status = 503;
+    const backendRoutePathError = new Error("The backend route path is not available.");
+    backendRoutePathError.status = 503;
 
-    if (!checkActiveBackendRoute(req.path))
-        return next(backendRouteError);
+    if (!backendRoutePathsStatusRecord["ACTIVE"])
+        return next(backendRoutePathError);
 
     next();
 };
