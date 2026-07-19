@@ -3,12 +3,12 @@ import { getBackendRoutePathsCache, getBackendRoutePathsMappingCache, getBackend
 
 const router = express.Router();
 
-const BACKEND_ROUTES_PATHS = getBackendRoutePathsCache();
+const BACKEND_ROUTE_PATHS = getBackendRoutePathsCache();
 const BACKEND_ROUTE_PATHS_MAPPING = getBackendRoutePathsMappingCache();
 const BACKEND_ROUTE_PATHS_STATUSES = getBackendRoutePathsStatusesCache();
-const FRONTEND_ROUTES_PATHS = getFrontendRoutePathsCache();
-const FRONTEND_ROUTES_PATHS_MAPPING = getFrontendRoutePathsMappingCache();
-const FRONTEND_ROUTES_PATHS_STATUSES = getFrontendRoutePathsStatusesCache();
+const FRONTEND_ROUTE_PATHS = getFrontendRoutePathsCache();
+const FRONTEND_ROUTE_PATHS_MAPPING = getFrontendRoutePathsMappingCache();
+const FRONTEND_ROUTE_PATHS_STATUSES = getFrontendRoutePathsStatusesCache();
 
 router.get(BACKEND_ROUTE_PATHS_MAPPING.ROUTE_PATHS.BACKEND.ROUTE, (req, res, next) =>
 {
@@ -28,7 +28,7 @@ router.get(BACKEND_ROUTE_PATHS_MAPPING.ROUTE_PATHS.FRONTEND.ROUTE, (req, res, ne
 {
     try
     {
-        res.status(200).json({ FRONTEND_ROUTE_PATHS, FRONTEND_ROUTES_PATHS_MAPPING, FRONTEND_ROUTES_PATHS_STATUSES });
+        res.status(200).json({ FRONTEND_ROUTE_PATHS, FRONTEND_ROUTE_PATHS_MAPPING, FRONTEND_ROUTE_PATHS_STATUSES });
     }
     catch (err)
     {
