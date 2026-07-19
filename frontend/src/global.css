@@ -1,0 +1,85 @@
+@font-face
+{
+    font-family: "Open Sans";
+    src: url("https://itadakistreetseriesanaly.blob.core.windows.net/fonts/OpenSans-VariableFont_wdth,wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (prefers-color-scheme: light)
+{
+    :root
+    {
+        --page-background-color-1: #E6E6E6;
+        --page-background-color-2: #B9B9B9;
+        --page-foreground-color: #000;
+    }
+}
+
+@media (prefers-color-scheme: dark)
+{
+    :root
+    {
+        --page-background-color-1: #444;
+        --page-background-color-2: #111;
+        --page-foreground-color: #FFF;
+    }
+}
+
+:root
+{
+    font-family: "Open Sans", Helvetica, sans-serif;
+    line-height: normal;
+
+    --page-background-color-1: #E6E6E6;
+    --page-background-color-2: #B9B9B9;
+    --page-foreground-color: #000;
+}
+
+html, body
+{
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #root
+{
+    color: var(--page-foreground-color);
+    background-color: var(--page-background-color-2);
+}
+
+.flex
+{
+    display: flex;
+}
+
+.flex.flex-row-content
+{
+    flex-direction: row;
+}
+
+.flex.flex-column-content
+{
+    flex-direction: column;
+}
+
+.flex.flex-center-content
+{
+    justify-content: center;
+    align-items: center;
+}
+
+.flex > .flex-fill-content
+{
+    flex: 1;
+}
+
+#root > main > div:nth-of-type(odd)
+{
+    background-color: var(--page-background-color-1);
+}
+
+#root > header, #root > main > div:nth-of-type(even), #root > footer
+{
+    background-color: var(--page-background-color-2);
+}
