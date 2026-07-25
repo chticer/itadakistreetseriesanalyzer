@@ -1,4 +1,5 @@
 import "./utils/environment-variables.js";
+import "./utils/telemetry.js";
 
 import express from "express";
 import helmet from "helmet";
