@@ -1,7 +1,8 @@
+import "./utils/environment-variables.js";
+
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
-import dotenv from "dotenv";
 import path from "path";
 import mongoose from "mongoose";
 import { fileURLToPath } from "url";
@@ -18,8 +19,6 @@ const startup = async () =>
 {
     try
     {
-        dotenv.config();
-
         await mongoose.connect
         (
             process.env.MONGODB_URI,
