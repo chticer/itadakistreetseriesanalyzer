@@ -1,8 +1,5 @@
 import path from "path";
-import dotenv from "dotenv";
 import { pathToFileURL } from "url";
-
-dotenv.config();
 
 const rootDirectoryBase = process.env.ROOT_DIRECTORY || "./";
 
