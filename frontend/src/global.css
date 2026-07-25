@@ -13,6 +13,8 @@
         --page-background-color-1: #E6E6E6;
         --page-background-color-2: #B9B9B9;
         --page-foreground-color: #000;
+
+        --navigation-link-foreground-color: #000000BF;
     }
 }
 
@@ -23,6 +25,131 @@
         --page-background-color-1: #444;
         --page-background-color-2: #111;
         --page-foreground-color: #FFF;
+
+        --navigation-link-foreground-color: #FFFFFFBF;
+    }
+}
+
+@media (min-width: 1921px)
+{
+    :root
+    {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1920px) and (min-width: 600px)
+{
+    :root
+    {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 599px)
+{
+    :root
+    {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1366px) and (min-height: 447px)
+{
+    #root > header, #root > main, #root > footer, #root > main > div
+    {
+        justify-content: center;
+        align-items: center;
+    }
+
+    #root > header > div, #root > main > div > div, #root > footer > div
+    {
+        width: 90%;
+    }
+
+    #root > header > div, #root > footer > div
+    {
+        padding: 0.5em 0;
+    }
+
+    #root > main > div
+    {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #root > main > div > div
+    {
+        padding: 2em 0;
+    }
+
+    .flex.flex-fluid-content
+    {
+        flex-direction: row;
+    }
+
+    .spacing-fluid-separator-container > div:not(:last-of-type)
+    {
+        margin-right: 25px;
+    }
+
+    .flex.flex-fluid-content > div:not(:last-of-type)
+    {
+        margin-right: 2em;
+    }
+
+    .flex.flex-fluid.content.flex-spacing-around > div
+    {
+        margin: 0 1em;
+    }
+}
+
+@media (max-width: 1365px), (max-height: 446px)
+{
+    html, body
+    {
+        min-width: 300px;
+    }
+
+    #root > header > div
+    {
+        padding: 1em 0.5em 0 0.5em;
+    }
+
+    #root > main > div > div
+    {
+        padding: 2em 0.5em;
+    }
+
+    #root > footer > div
+    {
+        padding: 1em 0.5em;
+        flex-direction: column-reverse;
+    }
+
+    .dropdown-menu
+    {
+        max-width: 100%;
+    }
+
+    .dropdown-item
+    {
+        white-space: normal;
+    }
+
+    .flex.flex-fluid-content
+    {
+        flex-direction: column;
+    }
+
+    .flex.flex-fluid-content > div:not(:last-of-type)
+    {
+        margin-bottom: 2em;
+    }
+
+    .flex.flex-fluid-content.flex-spacing-around > div
+    {
+        margin: 1em 0;
     }
 }
 
@@ -34,6 +161,8 @@
     --page-background-color-1: #E6E6E6;
     --page-background-color-2: #B9B9B9;
     --page-foreground-color: #000;
+
+    --navigation-link-foreground-color: #000000BF;
 }
 
 html, body
@@ -46,6 +175,28 @@ html, body, #root
 {
     color: var(--page-foreground-color);
     background-color: var(--page-background-color-2);
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+.sticky-top, .dropdown-menu
+{
+    z-index: 1;
+}
+
+.dropdown-menu
+{
+    min-width: auto;
+    font-size: 0.9em;
+}
+
+.dropdown-menu.show
+{
+    z-index: 2;
 }
 
 .flex
@@ -69,6 +220,11 @@ html, body, #root
     align-items: center;
 }
 
+.flex.flex-spacing-around
+{
+    justify-content: space-around;
+}
+
 .flex > .flex-fill-content
 {
     flex: 1;
@@ -82,4 +238,29 @@ html, body, #root
 #root > header, #root > main > div:nth-of-type(even), #root > footer
 {
     background-color: var(--page-background-color-2);
+}
+
+#root > header a, #root > footer a
+{
+    color: var(--navigation-link-foreground-color);
+}
+
+#root > header a:hover, #root > footer a:hover
+{
+    color: var(--page-foreground-color);
+}
+
+#website-link
+{
+    font-size: 1.25em;
+}
+
+#root > footer
+{
+    font-size: 0.75em;
+}
+
+.spacing-horizontal-separator-container > div:not(:last-of-type)
+{
+    margin-right: 1.5em;
 }
