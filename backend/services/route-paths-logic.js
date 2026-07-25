@@ -42,23 +42,45 @@ export const getFrontendRoutePaths = async (documentFilters) =>
     return { frontendRoutePaths, frontendRoutePathsMapping, frontendRoutePathsStatuses };
 };
 
-const initializeRoutePathsUpdate = (routePaths) => routePaths.map((routePath) =>
-(
+const initializeRoutePathsUpdate = (routePaths) =>
+{
+    const databaseOperations = [];
+
+    routePaths.map((routePath) =>
     {
-        updateOne:
-        {
-            filter:
+        databaseOperations.push
+        (
             {
-                key: routePath["key"]
-            },
-            update:
+                updateOne:
+                {
+                    filter: { key: routePath["key"] },
+                    update: { $setOnInsert: routePath },
+                    upsert: true
+                }
+            }
+        );
+
+        routePath["routes"].map((routePathRoute) => databaseOperations.push
+        (
             {
-                $setOnInsert: routePath
-            },
-            upsert: true
-        }
-    }
-));
+                updateOne:
+                {
+                    filter:
+                    {
+                        key: routePath["key"],
+                        "routes.key": { $ne: routePathRoute["key"] }
+                    },
+                    update:
+                    {
+                        $push: { routes: routePathRoute }
+                    }
+                }
+            }
+        ));
+    });
+
+    return databaseOperations;
+};
 
 export const syncRoutePaths = async () =>
 {
