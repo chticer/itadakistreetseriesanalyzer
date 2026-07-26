@@ -20,6 +20,31 @@ updates:
       - "github-actions"
       - "dependabot"
   - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "cron"
+      cronjob: "30 12 * * 2"
+    groups:
+      deps:
+        patterns:
+          - "@azure/*"
+          - "applicationinsights"
+          - "cors"
+          - "dotenv"
+          - "express"
+          - "helmet"
+          - "mongoose"
+      tools:
+        patterns:
+          - "nodemon"
+    commit-message:
+      prefix: "[npm Dependency Update (Backend)]"
+    open-pull-requests-limit: 10
+    target-branch: "dev"
+    labels:
+      - "npm"
+      - "dependabot"
+  - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
       interval: "cron"
@@ -27,13 +52,18 @@ updates:
     groups:
       deps:
         patterns:
-          - "react*"
+          - "@popperjs/*"
+          - "bootstrap"
+          - "react"
+          - "react-*"
+          - "vite"
+          - "vite-*"
       tools:
         patterns:
-          - "@eslint*"
-          - "@vite*"
-          - "eslint*"
-          - "vite*"
+          - "@eslint/*"
+          - "@vite/*"
+          - "eslint"
+          - "eslint-*"
     commit-message:
       prefix: "[npm Dependency Update (Frontend)]"
     open-pull-requests-limit: 10
