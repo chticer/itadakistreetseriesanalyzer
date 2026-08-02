@@ -16,7 +16,7 @@ const Main = () =>
         <ScrollToTop />
 
         <header className="flex flex-fluid-content sticky-top">
-            <div className="flex flex-fluid-content flex-spacing-between">
+            <div className="flex flex-fluid-content flex-spacing-around">
                 <div className="flex flex-fluid-content flex-fill-content spacing-fluid-separator-container">
                     <div>
                         <Link to={FRONTEND_ROUTE_PATHS_MAPPING.INDEX.INDEX.FULL_PATH} id="website-link">{appData.websiteSettings.name}</Link>
