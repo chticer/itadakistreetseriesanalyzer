@@ -1,9 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
 import { useApp } from "../contexts/GlobalStateContext";
+import { getFrontendRoutePathsMappingCache } from "../utils/route-paths-cache.js";
 import ScrollToTop from "../components/ScrollToTop";
 
 const Main = () =>
 {
+    const FRONTEND_ROUTE_PATHS_MAPPING = getFrontendRoutePathsMappingCache();
+
+    const GAMES_PATH = FRONTEND_ROUTE_PATHS_MAPPING.INDEX.GAMES.FULL_PATH;
+
     const { appData } = useApp();
 
     return (
@@ -11,10 +16,10 @@ const Main = () =>
         <ScrollToTop />
 
         <header className="flex flex-fluid-content sticky-top">
-            <div className="flex flex-fluid-content flex-spacing-between">
+            <div className="flex flex-fluid-content flex-spacing-around">
                 <div className="flex flex-fluid-content flex-fill-content spacing-fluid-separator-container">
                     <div>
-                        <Link to="/" id="website-link">{appData.websiteSettings.name}</Link>
+                        <Link to={FRONTEND_ROUTE_PATHS_MAPPING.INDEX.INDEX.FULL_PATH} id="website-link">{appData.websiteSettings.name}</Link>
                     </div>
 
                     <div className="flex flex-row-content flex-fill-content dropdown">
@@ -23,43 +28,43 @@ const Main = () =>
 
                             <ul className="dropdown-menu">
                                 <li>
-                                    <Link to="/games?igdb-id=69176" className="dropdown-item disabled" aria-disabled="true">Dragon Quest & Final Fantasy in Itadaki Street Portable</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=69176`} className="dropdown-item disabled" aria-disabled="true">Dragon Quest & Final Fantasy in Itadaki Street Portable</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=19930" className="dropdown-item disabled" aria-disabled="true">Fortune Street</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=19930`} className="dropdown-item disabled" aria-disabled="true">Fortune Street</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=64398" className="dropdown-item disabled" aria-disabled="true">Fortune Street Smart</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=64398`} className="dropdown-item disabled" aria-disabled="true">Fortune Street Smart</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=54550" className="dropdown-item disabled" aria-disabled="true">Itadaki Street: Dragon Quest & Final Fantasy 30th Anniversary</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=54550`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street: Dragon Quest & Final Fantasy 30th Anniversary</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=60478" className="dropdown-item disabled" aria-disabled="true">Itadaki Street: Gorgeous King</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=60478`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street: Gorgeous King</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=48751" className="dropdown-item disabled" aria-disabled="true">Itadaki Street: Watashi no Oten ni Yottette</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=48751`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street: Watashi no Oten ni Yottette</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=38345" className="dropdown-item disabled" aria-disabled="true">Itadaki Street 2: Neon Sign ha Bara Iro ni</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=38345`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street 2: Neon Sign ha Bara Iro ni</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=60477" className="dropdown-item disabled" aria-disabled="true">Itadaki Street 3</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=60477`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street 3</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=71885" className="dropdown-item disabled" aria-disabled="true">Itadaki Street DS</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=71885`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street DS</Link>
                                 </li>
 
                                 <li>
-                                    <Link to="/games?igdb-id=72987" className="dropdown-item disabled" aria-disabled="true">Itadaki Street Special</Link>
+                                    <Link to={`${GAMES_PATH}?igdb-id=72987`} className="dropdown-item disabled" aria-disabled="true">Itadaki Street Special</Link>
                                 </li>
                             </ul>
                         </div>
@@ -133,7 +138,9 @@ const Main = () =>
 
                     <div>
                         <div>
-                            <div>Sitemap</div>
+                            <Link to={FRONTEND_ROUTE_PATHS_MAPPING.INDEX.SITEMAP.FULL_PATH}>
+                                <div>Sitemap</div>
+                            </Link>
                         </div>
                     </div>
                 </div>
