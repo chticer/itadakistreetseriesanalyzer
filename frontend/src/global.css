@@ -183,6 +183,16 @@ a
     text-decoration: none;
 }
 
+.list-group-item-action
+{
+    border-color: var(--navigation-link-foreground-color);
+}
+
+.list-group-item, .list-group-item-action:not(.active):focus, .list-group-item-action:not(.active):hover
+{
+    background-color: inherit;
+}
+
 .sticky-top, .dropdown-menu
 {
     z-index: 1;
