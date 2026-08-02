@@ -48,6 +48,22 @@ const FRONTEND_ROUTE_PATHS =
                 component_name: "Home",
                 sitemap_label: "Home",
                 active: true
+            },
+            {
+                key: "GAMES",
+                path: "games",
+                component_name: "Games",
+                tab_title: "Games",
+                sitemap_label: "Games",
+                active: true
+            },
+            {
+                key: "SITEMAP",
+                path: "sitemap",
+                component_name: "Sitemap",
+                tab_title: "Sitemap",
+                sitemap_label: "Sitemap",
+                active: true
             }
         ]
     }
