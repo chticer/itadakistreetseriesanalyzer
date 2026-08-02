@@ -14,6 +14,19 @@ const Home = () =>
         <TitleComponent />
 
         <main>
+            <div>
+                <div className="flex flex-column-content flex-center-content spacing-vertical-content spacing-vertical-separator-container text-center">
+                    <div>
+                        <h1>Itadaki Street Series Analyzer</h1>
+                    </div>
+
+                    <div className="spacing-vertical-separator-header-container">
+                        <div>Ever wondered what hidden secrets and other unknown game mechanics are part of Itadaki Street games to be exploited and unveiled for speedruns, game theory research, or just plain fun? Wonder no more!</div>
+
+                        <div>This website allows you to contribute your own game experiences to train machine learning models for predicting outcomes of any Itadaki Street game. See Itadaki Street game information and how to get started with training and predicting game outcomes below!</div>
+                    </div>
+                </div>
+            </div>
         </main>
     </>
     );
