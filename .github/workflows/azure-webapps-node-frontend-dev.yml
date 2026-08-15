@@ -26,9 +26,8 @@ permissions:
     contents: read
 
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-latest
-
         steps:
             - uses: actions/checkout@v7
 
@@ -54,32 +53,11 @@ jobs:
               run: |
                 cp -r shared ${{ env.DIRECTORY_NAME }}/src/shared
 
-            - name: Upload artifact to deploy job
-              uses: actions/upload-artifact@v7
-              with:
-                name: node-app-${{ env.BRANCH_NAME }}
-                path: ${{ env.DIRECTORY_NAME }}/dist
-
-    deploy:
-        permissions:
-            contents: none
-        runs-on: ubuntu-latest
-        needs: build
-        environment:
-            name: "Development"
-            url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-        if: github.actor != 'dependabot[bot]'
-        steps:
-            - name: Download artifact from build job
-              uses: actions/download-artifact@v8
-              with:
-                name: node-app-${{ env.BRANCH_NAME }}
-
             - name: Deploy to Azure Web App
-              id: deploy-to-webapp
               uses: azure/webapps-deploy@v3
+              id: deploy-to-webapp
+              if: github.actor != 'dependabot[bot]'
               with:
                 app-name: ${{ env.AZURE_WEBAPP_NAME }}
                 publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_DEV }}
-                package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+                package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.DIRECTORY_NAME }}/dist
