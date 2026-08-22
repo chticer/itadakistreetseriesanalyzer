@@ -40,6 +40,11 @@ jobs:
                 cache: "npm"
                 cache-dependency-path: ${{ env.DIRECTORY_NAME }}/package-lock.json
 
+            - name: npm install (/shared)
+              working-directory: "shared"
+              run: |
+                npm install --ignore-scripts
+
             - name: npm install, build, and test
               working-directory: ${{ env.DIRECTORY_NAME }}
               run: |
