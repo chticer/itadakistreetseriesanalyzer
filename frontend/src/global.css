@@ -83,6 +83,11 @@
         padding: 2em 0;
     }
 
+    .carousel-inner
+    {
+        width: 90%;
+    }
+
     .flex.flex-fluid-content
     {
         flex-direction: row;
@@ -107,6 +112,11 @@
     {
         padding-top: 8em;
         padding-bottom: 8em;
+    }
+
+    .flag, .flag svg
+    {
+        height: 36px;
     }
 }
 
@@ -143,6 +153,11 @@
         white-space: normal;
     }
 
+    .carousel-inner
+    {
+        width: 75%;
+    }
+
     .flex.flex-fluid-content
     {
         flex-direction: column;
@@ -163,6 +178,11 @@
         padding-top: 6em;
         padding-bottom: 6em;
     }
+
+    .flag, .flag svg
+    {
+        height: 24px;
+    }
 }
 
 :root
@@ -174,10 +194,11 @@
     --page-background-color-2: #B9B9B9;
     --page-foreground-color: #000;
 
+    --hover-content-background-color: #0000001A;
     --navigation-link-foreground-color: #000000BF;
 }
 
-html, body, h1, h2, h3, h4, h5, h6
+html, body, h1, h2, h3, h4, h5, h6, .card-body.list-group
 {
     margin: 0;
     padding: 0;
@@ -191,8 +212,46 @@ html, body, #root
 
 a
 {
-    color: inherit;
     text-decoration: none;
+    cursor: pointer;
+}
+
+svg
+{
+    pointer-events: none;
+}
+
+img, svg
+{
+    display: block;
+    width: auto
+}
+
+a, .btn, .btn:hover, .dropdown a:hover, .card, .card-body, .list-group-item
+{
+    color: inherit;
+}
+
+.btn, .btn:hover, .card, .card-body.list-group > .list-group-item
+{
+    border-color: inherit;
+}
+
+.btn:hover, .dropdown a:hover
+{
+    text-decoration: inherit;
+}
+
+.btn
+{
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25em;
+}
+
+.btn:hover, a.dropdown-item:hover, a.dropdown-item:active, .card-header
+{
+    background-color: var(--hover-content-background-color);
 }
 
 .list-group-item-action
@@ -200,7 +259,7 @@ a
     border-color: var(--navigation-link-foreground-color);
 }
 
-.list-group-item, .list-group-item-action:not(.active):focus, .list-group-item-action:not(.active):hover
+.list-group-item, .list-group-item-action:not(.active):focus, .list-group-item-action:not(.active):hover, .card
 {
     background-color: inherit;
 }
@@ -219,6 +278,57 @@ a
 .dropdown-menu.show
 {
     z-index: 2;
+}
+
+.carousel-indicators
+{
+    margin: 0;
+}
+
+.carousel-indicators [data-bs-target]
+{
+    background-color: var(--page-foreground-color);
+}
+
+.carousel-indicators + .carousel-inner
+{
+    padding-bottom: 2em;
+}
+
+.carousel-control-prev, .carousel-control-next
+{
+    width: inherit;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon
+{
+    background-image: none;
+    background-color: var(--page-foreground-color);
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.carousel-control-prev-icon
+{
+    -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon
+{
+    -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.card-body.list-group, .stats-container
+{
+    justify-content: space-evenly;
+}
+
+.card-body.list-group > .list-group-item
+{
+    justify-content: center;
 }
 
 .flex
@@ -295,4 +405,30 @@ a
 .spacing-vertical-separator-header-container > div:not(:last-of-type)
 {
     margin-bottom: 0.75em;
+}
+
+.game-information-description-container
+{
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.stats-container > div > div:first-of-type
+{
+    font-size: 3em;
+}
+
+.stats-container > div > div:last-of-type
+{
+    font-size: 1.25em;
+}
+
+.stats-container > div > div:last-of-type
+{
+    text-transform: uppercase;
+}
+
+.flag
+{
+    margin-right: 5px;
 }

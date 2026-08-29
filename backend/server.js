@@ -37,7 +37,23 @@ const startup = async () =>
 
         app.set("trust proxy", 1);
 
-        app.use(helmet());
+        app.use
+        (
+            helmet
+            (
+                {
+                    contentSecurityPolicy:
+                    {
+                        useDefaults: true,
+                        directives:
+                        {
+                            "connect-src": [ "'self'", "https://itadakistreetseriesanaly.blob.core.windows.net", "https://purecatamphetamine.github.io" ],
+                            "img-src": [ "'self'", "data:", "https://itadakistreetseriesanaly.blob.core.windows.net", "https://images.igdb.com", "https://purecatamphetamine.github.io" ]
+                        }
+                    }
+                }
+            )
+        );
 
         app.use((req, res, next) =>
         {

@@ -1,4 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
+import { getTimestampFromEpochMilliseconds } from "../../../shared/temporal-helper.js";
 import { useApp } from "../contexts/GlobalStateContext";
 import { getFrontendRoutePathsMappingCache } from "../utils/route-paths-cache.js";
 import ScrollToTop from "../components/ScrollToTop";
@@ -114,7 +115,7 @@ const Main = () =>
         <footer className="flex flex-fluid-content">
             <div className="flex flex-fluid-content flex-spacing-around">
                 <div className="flex flex-fluid-content flex-fill-content spacing-fluid-separator-container">
-                    <div>&copy; {new Date().getFullYear()} {appData.websiteSettings.name} - All Rights Reserved</div>
+                    <div>&copy; {getTimestampFromEpochMilliseconds({}, "YYYY")} {appData.websiteSettings.name} - All Rights Reserved</div>
                 </div>
 
                 <div className="flex flex-fluid-content spacing-fluid-separator-container">
