@@ -123,6 +123,11 @@
     {
         height: 36px;
     }
+
+    .small-width
+    {
+        max-width: 50%;
+    }
 }
 
 @media (max-width: 1365px), (max-height: 446px)

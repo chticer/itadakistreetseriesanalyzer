@@ -159,6 +159,34 @@ const Home = () =>
                     {gameCarouselItems}
                 </CarouselContainer>
             </div>
+
+            <div>
+                <div className="flex flex-fluid-content small-width">
+                    <div className="flex-fill-content spacing-vertical-separator-container">
+                        <div>
+                            <h3>Train</h3>
+                        </div>
+
+                        <div className="spacing-vertical-separator-header-container">
+                            <div>The training part of the Itadaki Street Series Analyzer program allows you to send input data based on events and outcomes that occur within the selected game. Training data collected from users is used to predict what events and outcomes will happen before they occur.</div>
+
+                            <div className="fw-bold fst-italic">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div className="flex-fill-content spacing-vertical-separator-container">
+                        <div>
+                            <h3>Predict</h3>
+                        </div>
+
+                        <div className="spacing-vertical-separator-header-container">
+                            <div>The predicting part of the Itadaki Street Series Analyzer program allows you to receive output data from machine learning algorithms that indicate what events and outcomes are likely to happen in realtime. Predicting data given to users is used to help players understand different aspects of game theory for their own use case, such as speedruns and NPC manipulation. This is a trial-and-error process that will become more accurate and precise as more training data becomes available.</div>
+
+                            <div className="fw-bold fst-italic">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </>
     );
