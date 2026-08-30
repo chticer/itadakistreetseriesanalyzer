@@ -88,6 +88,11 @@
         width: 90%;
     }
 
+    .carousel-inner img
+    {
+        height: 500px;
+    }
+
     .flex.flex-fluid-content
     {
         flex-direction: row;
@@ -156,6 +161,11 @@
     .carousel-inner
     {
         width: 75%;
+    }
+
+    .carousel-inner img
+    {
+        width: 100%;
     }
 
     .flex.flex-fluid-content

@@ -48,7 +48,7 @@ const Home = () =>
                             game["cover"] &&
                             (
                                 <div>
-                                    <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big_2x/${game["cover"]["image_id"]}.webp`} alt={`${game["name"]} (IGDB Game ID ${game["id"]}) Cover`} height="500" />
+                                    <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big_2x/${game["cover"]["image_id"]}.webp`} alt={`${game["name"]} (IGDB Game ID ${game["id"]}) Cover`} />
                                 </div>
                             )
                         }
