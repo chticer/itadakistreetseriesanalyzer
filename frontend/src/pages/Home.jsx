@@ -120,7 +120,7 @@ const Home = () =>
 
                         <div className="flex flex-fluid-content flex-center-content">
                             <div>
-                                <Link to={`${GAMES_PATH}?igdb-id=${game["id"]}`} className="btn">View Page on Itadaki Street Series Analyzer</Link>
+                                <Link to={`${GAMES_PATH}?igdb-id=${game["id"]}`} className="btn disabled">View Page on Itadaki Street Series Analyzer</Link>
                             </div>
 
                             <div>
