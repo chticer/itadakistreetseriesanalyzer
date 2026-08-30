@@ -32,13 +32,13 @@ const Home = () =>
                         <div className="flex flex-column-content">
                             <div>0</div>
 
-                            <div>Trained instances</div>
+                            <div>Trained Instances</div>
                         </div>
 
                         <div className="flex flex-column-content">
                             <div>0</div>
 
-                            <div>Predicted instances</div>
+                            <div>Predicted Instances</div>
                         </div>
                     </div>
 
