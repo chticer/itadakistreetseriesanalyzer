@@ -88,6 +88,11 @@
         width: 90%;
     }
 
+    .carousel-inner img
+    {
+        height: 500px;
+    }
+
     .flex.flex-fluid-content
     {
         flex-direction: row;
@@ -117,6 +122,11 @@
     .flag, .flag svg
     {
         height: 36px;
+    }
+
+    .small-width
+    {
+        max-width: 50%;
     }
 }
 
@@ -156,6 +166,11 @@
     .carousel-inner
     {
         width: 75%;
+    }
+
+    .carousel-inner img
+    {
+        width: 100%;
     }
 
     .flex.flex-fluid-content
@@ -266,7 +281,7 @@ a, .btn, .btn:hover, .dropdown a:hover, .card, .card-body, .list-group-item
 
 .sticky-top, .dropdown-menu
 {
-    z-index: 1;
+    z-index: 2;
 }
 
 .dropdown-menu
@@ -277,12 +292,13 @@ a, .btn, .btn:hover, .dropdown a:hover, .card, .card-body, .list-group-item
 
 .dropdown-menu.show
 {
-    z-index: 2;
+    z-index: 3;
 }
 
 .carousel-indicators
 {
     margin: 0;
+    z-index: 1;
 }
 
 .carousel-indicators [data-bs-target]
