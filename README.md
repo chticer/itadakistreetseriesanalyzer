@@ -14,6 +14,13 @@ This project requires binaries and IDEs that can be used with the MERN stack and
 git clone https://github.com/chticer/itadakistreetseriesanalyzer.git
 ```
 
+The shared directory handles all code and files used by both the backend and frontend. There is no dev script to run a server but npm must be installed before running a server on the backend or frontend.
+
+```
+cd shared
+npm install
+```
+
 The backend directory handles all code and files for retrieving and using project data. The dev script within npm handles starting the server on port 11004 or a custom port as an environment variable (see the "Environment Variables" section).
 
 ```
