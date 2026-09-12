@@ -71,3 +71,20 @@ updates:
     labels:
       - "npm"
       - "dependabot"
+  - package-ecosystem: "npm"
+    directory: "/shared"
+    schedule:
+      interval: "cron"
+      cronjob: "30 12 * * 2"
+    groups:
+      deps:
+        patterns:
+          - "convert"
+          - "temporal-polyfill"
+    commit-message:
+      prefix: "[npm Dependency Update (Shared)]"
+    open-pull-requests-limit: 10
+    target-branch: "dev"
+    labels:
+      - "npm"
+      - "dependabot"
