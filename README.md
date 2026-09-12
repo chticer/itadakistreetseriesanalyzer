@@ -1,6 +1,6 @@
 # Overview
 
-Itadaki Street Series Analyzer is the helper program that accurately keeps track of the gameplay that happens in the game for any ruleset and board selected while playing in tour mode for the entire Itadaki Street series. This analyzer program will also have the capability of user input from the community for data mining and machine learning purposes to store previously known outcomes at any time and to predict outcomes accurately and quickly in realtime.
+Itadaki Street Series Analyzer is the helper program that accurately keeps track of the gameplay that happens for the entire Itadaki Street series. This analyzer program will also have the capability of user input from the community for data mining and machine learning purposes to store previously known outcomes at any time and to predict outcomes accurately and quickly in realtime.
 
 The Itadaki Street Series Analyzer project is a React 19 and Vite project built with the MongoDB, Express.js, React, and Node.js (MERN) stack. This project is hosted on Microsoft Azure as an App Service and uses the Node 24 LTS stack.
 
@@ -29,7 +29,7 @@ npm install
 npm run dev
 ```
 
-The frontend directory handles all code and files for rendering the project on the website. The dev script within npm handles starting the server on port 10004 or a custom port as an environment variables (see the "Environment Variables" section).
+The frontend directory handles all code and files for rendering the project on the website. The dev script within npm handles starting the server on port 10004 or a custom port as an environment variables (see the "Environment Variables" section). The backend server must be fully running first before running the frontend server.
 
 ```
 cd frontend
