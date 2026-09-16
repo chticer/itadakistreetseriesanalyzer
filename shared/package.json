@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "type": "module",
     "dependencies": {
-        "convert": "^7.0.2",
-        "temporal-polyfill": "^1.0.4"
+        "convert": "^8.0.2",
+        "temporal-polyfill": "^1.0.5"
     }
 }
