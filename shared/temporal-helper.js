@@ -21,10 +21,11 @@ const getTimestampFromEpoch = (inputTime, outputFormat) =>
         "HH": zonedDateTime.hour.toString().padStart(2, "0"),
         "H": zonedDateTime.hour.toString(),
         "mm": zonedDateTime.minute.toString().padStart(2, "0"),
-        "ss": zonedDateTime.second.toString().padStart(2, "0")
+        "ss": zonedDateTime.second.toString().padStart(2, "0"),
+        "Z": zonedDateTime.offset
     };
 
-    return outputFormat.replace(/YYYY|YY|MM|M|DD|D|HH|H|mm|ss/g, (timestampPattern) => timestampPatterns[timestampPattern]);
+    return outputFormat.replace(new RegExp(Object.keys(timestampPatterns).join("|"), "g"), (timestampPattern) => timestampPatterns[timestampPattern]);
 };
 
 export const getTimestampFromEpochSeconds = (inputTime, outputFormat) =>
