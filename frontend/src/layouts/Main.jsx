@@ -17,15 +17,15 @@ const Main = () =>
         <ScrollToTop />
 
         <header className="flex flex-fluid-content sticky-top">
-            <div className="flex flex-fluid-content flex-spacing-around">
+            <div className="flex flex-fluid-content">
                 <div className="flex flex-fluid-content flex-fill-content spacing-fluid-separator-container">
-                    <div>
+                    <div className="flex flex-row-content">
                         <Link to={FRONTEND_ROUTE_PATHS_MAPPING.INDEX.INDEX.FULL_PATH} id="website-link">{appData.websiteSettings.name}</Link>
                     </div>
 
-                    <div className="flex flex-row-content flex-fill-content dropdown">
-                        <div className="flex flex-column-content flex-center-content">
-                            <Link to="#" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Games</Link>
+                    <div className="flex flex-row-content flex-fill-content flex-wrap-horizontal-container spacing-fluid-separator-container nav-header dropdown">
+                        <div className="flex flex-column-content">
+                            <Link to="#" className="flex flex-row-content flex-center-content flex-fill-content dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Games</Link>
 
                             <ul className="dropdown-menu">
                                 <li>
@@ -71,9 +71,9 @@ const Main = () =>
                         </div>
                     </div>
 
-                    <div className="flex flex-row-content dropdown">
-                        <div className="flex flex-column-content flex-center-content">
-                            <Link to="#" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Analyzer Instances</Link>
+                    <div className="flex flex-row-content flex-wrap-horizontal-container dropdown">
+                        <div className="flex flex-column-content">
+                            <Link to="#" className="flex flex-row-content flex-center-content flex-fill-content dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Analyzer Instances</Link>
 
                             <ul className="dropdown-menu dropdown-menu-end">
                                 <li>
@@ -87,9 +87,9 @@ const Main = () =>
                         </div>
                     </div>
 
-                    <div className="flex flex-row-content dropdown">
-                        <div className="flex flex-column-content flex-center-content">
-                            <Link to="#" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Theme</Link>
+                    <div className="flex flex-row-content flex-wrap-horizontal-container dropdown">
+                        <div className="flex flex-column-content">
+                            <Link to="#" className="flex flex-row-content flex-center-content flex-fill-content dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Theme</Link>
 
                             <ul className="dropdown-menu dropdown-menu-end">
                                 <li>
@@ -113,12 +113,12 @@ const Main = () =>
         <Outlet />
 
         <footer className="flex flex-fluid-content">
-            <div className="flex flex-fluid-content flex-spacing-around">
-                <div className="flex flex-fluid-content flex-fill-content spacing-fluid-separator-container">
+            <div className="flex flex-fluid-content">
+                <div className="flex flex-fluid-content flex-fill-content">
                     <div>&copy; {getTimestampFromEpochMilliseconds({}, "YYYY")} {appData.websiteSettings.name} - All Rights Reserved</div>
                 </div>
 
-                <div className="flex flex-fluid-content spacing-fluid-separator-container">
+                <div className="flex flex-fluid-content flex-spacing-around spacing-fluid-separator-container">
                     <div className="dropup">
                         <Link to="#" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Policies</Link>
 

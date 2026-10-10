@@ -14,6 +14,7 @@
         --page-background-color-2: #B9B9B9;
         --page-foreground-color: #000;
 
+        --hover-content-background-color: #0000000A;
         --navigation-link-foreground-color: #000000BF;
     }
 }
@@ -26,6 +27,7 @@
         --page-background-color-2: #111;
         --page-foreground-color: #FFF;
 
+        --hover-content-background-color: #FFFFFF0A;
         --navigation-link-foreground-color: #FFFFFFBF;
     }
 }
@@ -36,6 +38,11 @@
     {
         font-size: 24px;
     }
+
+    .nav-header > .flex-column-content
+    {
+        min-height: 60px;
+    }
 }
 
 @media (max-width: 1920px) and (min-width: 600px)
@@ -44,6 +51,11 @@
     {
         font-size: 20px;
     }
+
+    .nav-header > .flex-column-content
+    {
+        min-height: 50px;
+    }
 }
 
 @media (max-width: 599px)
@@ -51,6 +63,11 @@
     :root
     {
         font-size: 16px;
+    }
+
+    .nav-header > .flex-column-content
+    {
+        min-height: 40px;
     }
 }
 
@@ -142,6 +159,11 @@
         padding: 1em 0.5em 0 0.5em;
     }
 
+    #root > header > div > .spacing-fluid-separator-container > div:not(:last-of-type)
+    {
+        margin-bottom: 0;
+    }
+
     #root > main > div > div:not(.spacing-vertical-content)
     {
         padding: 2em 0.5em;
@@ -151,6 +173,16 @@
     {
         padding: 1em 0.5em;
         flex-direction: column-reverse;
+    }
+
+    #root > footer > div:first-of-type > div:first-of-type
+    {
+        margin-bottom: 0;
+    }
+
+    #root > footer > div:last-of-type > div, .spacing-fluid-separator-container:not(.nav-header) > div:not(:last-of-type)
+    {
+        margin-bottom: 25px;
     }
 
     .dropdown-menu
@@ -209,7 +241,7 @@
     --page-background-color-2: #B9B9B9;
     --page-foreground-color: #000;
 
-    --hover-content-background-color: #0000001A;
+    --hover-content-background-color: #0000000A;
     --navigation-link-foreground-color: #000000BF;
 }
 
@@ -373,6 +405,11 @@ a, .btn, .btn:hover, .dropdown a:hover, .card, .card-body, .list-group-item
     justify-content: space-around;
 }
 
+.flex.flex-wrap-horizontal-container
+{
+    flex-wrap: wrap;
+}
+
 .flex > .flex-fill-content
 {
     flex: 1;
@@ -398,6 +435,16 @@ a, .btn, .btn:hover, .dropdown a:hover, .card, .card-body, .list-group-item
     color: var(--page-foreground-color);
 }
 
+#root > header > div:first-of-type > div:first-of-type > div
+{
+    align-items: center;
+}
+
+#root > header
+{
+    border-bottom: 1px solid var(--page-background-color-1);
+}
+
 #website-link
 {
     font-size: 1.25em;
@@ -408,9 +455,25 @@ a, .btn, .btn:hover, .dropdown a:hover, .card, .card-body, .list-group-item
     font-size: 0.75em;
 }
 
-.spacing-horizontal-separator-container > div:not(:last-of-type)
+.flex.flex-wrap-horizontal-container > div:not(:last-of-type), .spacing-horizontal-separator-container > div:not(:last-of-type)
 {
     margin-right: 1.5em;
+}
+
+.flex.flex-wrap-horizontal-container > div
+{
+    margin: 10px 0;
+}
+
+.flex.flex-wrap-horizontal-container.nav-header > div
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.nav-header > .flex-column-content > .flex-row-content > .flex-row-content > div:not(:last-of-type), .flex.flex-wrap-horizontal-container > div:not(:last-of-type)
+{
+    margin-right: 10px;
 }
 
 .spacing-vertical-separator-container > div:not(:last-of-type)
