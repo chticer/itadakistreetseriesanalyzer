@@ -4,6 +4,6 @@
     "type": "module",
     "dependencies": {
         "convert": "^8.0.2",
-        "temporal-polyfill": "^1.0.5"
+        "temporal-polyfill": "^1.0.6"
     }
 }
